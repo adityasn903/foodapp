@@ -187,7 +187,7 @@ export default {
     },
     sendOTP() {
       axios
-        .post("/api/sendotp", { phoneNumber: this.phoneNumber })
+        .post("/sendotp", { phoneNumber: this.phoneNumber })
         .then(response => {
           this.otp_data = response.data;
 

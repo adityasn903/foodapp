@@ -13,16 +13,7 @@ const { mongoose } = require("./db/mongoose");
 const expressValidator = require('express-validator');
 const cookieParser = require("cookie-parser");
 
-const router = express.Router();
 const app = express();
-
-// router.use((req, res, next) => {
-//   Object.setPrototypeOf(req, app.request);
-//   Object.setPrototypeOf(res, app.response);
-//   req.res = res;
-//   res.req = req;
-//   next();
-// });
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -123,16 +114,16 @@ app.post("/signup", (req, res) => {
   }
 });
 
-app.post("/api/sendotp", (req, res) => {
-  console.log(req.body.phoneNumber);
+app.post("/sendotp", (req, res) => {
+  console.log('request came!!!!!!!!!!!!!!!');
 
   users.findOne({contact: req.body.phoneNumber}).then((currentUser)=>{
     if(!currentUser){
       var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
       req.session.OTPtoken = token;
       var nexmoSend = {
-        api_key: "your api_key",
-        api_secret: "your api_secret",
+        api_key: "74ca638f",
+        api_secret: "bYQfq9jqiTLBCxXG",
         number: req.body.phoneNumber,
         brand: "NexmoVerifyTest"
       };
@@ -153,8 +144,8 @@ app.post("/api/sendotp", (req, res) => {
 app.post("/api/verifyotp", (req, res) => {
 
   var nexmoSend = {
-    api_key: "your api_key",
-    api_secret: "your api_secret",
+    api_key: "74ca638f",
+    api_secret: "bYQfq9jqiTLBCxXG",
     request_id: req.body.request_id,
     code: req.body.code
   };
