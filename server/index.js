@@ -123,7 +123,7 @@ app.post("/signup", (req, res) => {
   }
 });
 
-app.post("/sendotp", (req, res) => {
+app.post("/api/sendotp", (req, res) => {
   console.log(req.body.phoneNumber);
 
   users.findOne({contact: req.body.phoneNumber}).then((currentUser)=>{
@@ -131,8 +131,8 @@ app.post("/sendotp", (req, res) => {
       var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
       req.session.OTPtoken = token;
       var nexmoSend = {
-        api_key: "74ca638f",
-        api_secret: "bYQfq9jqiTLBCxXG",
+        api_key: "your api_key",
+        api_secret: "your api_secret",
         number: req.body.phoneNumber,
         brand: "NexmoVerifyTest"
       };
@@ -150,11 +150,11 @@ app.post("/sendotp", (req, res) => {
   })
 });
 
-app.post("/verifyotp", (req, res) => {
+app.post("/api/verifyotp", (req, res) => {
 
   var nexmoSend = {
-    api_key: "74ca638f",
-    api_secret: "bYQfq9jqiTLBCxXG",
+    api_key: "your api_key",
+    api_secret: "your api_secret",
     request_id: req.body.request_id,
     code: req.body.code
   };
