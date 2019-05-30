@@ -2,10 +2,9 @@
 		<nav id="navv">
 			<img src="~/assets/foodblog.jpg" alt='oops' id="mylogo" width="70" height='60'/>
 			<ul>
-				<nuxt-link tag="li" to="/dishlist" >Indian</nuxt-link>
-				<nuxt-link tag="li" to="/dishlist" >American</nuxt-link>
-				<nuxt-link tag="li" to="/dishlist" >Italian</nuxt-link>
-				<nuxt-link tag="li" to="/dishlist" >Chinese</nuxt-link>
+				<nuxt-link tag="li" to="/dishlist/indian" >Indian</nuxt-link>
+				<nuxt-link tag="li" to="/dishlist/italian" >Italian</nuxt-link>
+				<nuxt-link tag="li" to="/dishlist/chinese" >Chinese</nuxt-link>
 			</ul>
 			<div class='input-icons'>
 				<button class="btn" @click = "getresults"><i class="fa fa-search icon"></i></button>

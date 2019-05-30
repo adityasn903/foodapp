@@ -1,10 +1,11 @@
 <template>
 
   <section id='main-content'>
-    <img src="../assets/2.jpg" id="image" />
-    <h1>Discover some amazing recipes which makes you hearts filled.<br> Go on! Explore the site...</h1>
-  </section>
 
+    <h1>You are in the {{$route.params.name}} dishes list page . </h1>
+  
+  </section>
+  
 </template>
 
 <script>
@@ -21,6 +22,9 @@ export default {
     return {
 
     }
+  },
+  created(){
+    
   }
 }
 </script>
@@ -40,14 +44,6 @@ export default {
   font-weight: 900;
 }
 
-#image {
-  width: 100%;
-  height: 580px;
-  z-index: -1;
-  filter: blur(1.5px);
-  -webkit-filter: blur(1.5px);
-  position: absolute;
-}
 #main-content h1{
   z-index: 2;
   font-weight: 800;

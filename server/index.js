@@ -175,6 +175,35 @@ app.post("/verifyotp", (req, res) => {
 });
 // req-res to get the dish list and dish details
 
+app.get('/')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

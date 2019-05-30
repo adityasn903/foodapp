@@ -1,15 +1,17 @@
-import axios from 'axios'
+import axios from "axios";
 import Vue from "vue";
 
 export const state = () => ({
   authUser: null,
-  logInState: false
+  logInState: false,
+  listOfDishes:[],
+  dishDetail: []
 })
 
 export const mutations = {
+  
   SET_USER: function (state, user) {
     state.authUser = user;
-
     if (state.logInState){
       state.logInState = false;  
     }
@@ -17,7 +19,9 @@ export const mutations = {
       state.logInState = true;
     }
   }
+
 }
+
 export const getters = {
   
 }
@@ -63,4 +67,32 @@ export const actions = {
       console.log('logout failed');
     })
   }     
+
 }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
