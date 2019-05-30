@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import {eventBus} from '~/plugins/myeventbus.js'
 
 export default{
 	data(){
@@ -34,10 +35,14 @@ export default{
 	,methods:{
 		async login() {
 	      	try {
-	        	await this.$store.dispatch('login', {
-	          			username: this.formUsername,
-	          			password: this.formPassword
-	        			});
+	        	await this.$store.dispatch('login', {username: this.formUsername, password: this.formPassword});
+	        	if (this.$store.state.authUser) {
+              		eventBus.$emit('signedIn', this.$store.state.authUser.fullName);
+              		document.getElementById("myLoginForm").style.display = "none";
+	    			document.getElementById("main-content").style.filter= 'blur(0px)';
+		    		document.getElementById("navv").style.filter= 'blur(0px)';
+  					document.getElementById("myfooter").style.filter= 'blur(0px)';
+                }
 	        	this.formUsername = '';
 	        	this.formPassword = '';
 	        	this.formError = null;

@@ -77,7 +77,7 @@
         </div>
         <div class="alert alert-danger" v-if="phoneErrorMessage">{{phoneErrorMessage}}</div>
 
-        <div class="input-container" v-if="true">
+        <div class="input-container" v-if="flag1">
           <input
             type="text"
             :class="{ 'form-control':true, 'is-valid':vflag1, 'is-invalid':iflag1 }"
@@ -94,7 +94,7 @@
           >Submit</button>
         </div>
         <div class="alert alert-danger" v-if="otpErrorMessage">{{otpErrorMessage}}</div>
-        <div v-if="true">
+        <div v-if="flag2">
           <div class="input-container">
             <input
               class="form-control"
@@ -153,6 +153,7 @@ import Vue from "vue";
 import axios from "axios";
 import VeeValidate from "vee-validate";
 Vue.use(VeeValidate);
+import {eventBus} from '~/plugins/myeventbus.js'
 
 export default {
   data() {
@@ -261,7 +262,11 @@ export default {
           try {
                 await this.$store.dispatch("signup", this.UserData);
                 if (this.$store.state.authUser) {
-                  this.$router.push("/dishlist");
+                  eventBus.$emit('signedIn', this.$store.state.authUser.fullName);
+                  document.getElementById("mySignupForm").style.display = "none";
+                  document.getElementById("main-content").style.filter= 'blur(0px)';
+                  document.getElementById("navv").style.filter= 'blur(0px)';
+                  document.getElementById("myfooter").style.filter= 'blur(0px)';
                 }
                 this.formError = null;
               } catch (e) {

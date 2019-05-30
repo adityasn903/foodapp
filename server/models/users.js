@@ -53,16 +53,15 @@ UserSchema.statics.findByCredentials = function(phoneNumber, password){
        if(!user){
            return Promise.reject();
        }
-   
-       return new Promise((resolve, reject) =>{
-           bcrypt.compare(password, user[0].password,(err, res)=>{
-               if(res){
-                   resolve(user[0])
-               }else{
-                   reject()
-               }
-           })
+    return new Promise((resolve, reject) =>{
+       bcrypt.compare(password, user[0].password,(err, res)=>{
+           if(res){
+            resolve(user[0])
+           }else{
+               reject()
+           }
        })
+    })
     });
 };
 

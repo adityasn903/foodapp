@@ -1,9 +1,9 @@
 <template>      
 <div class="maindiv"> 
-  <header>
-    <mynavheader />
-    <popuplogin />
-    <popupsignup />
+  <header> 
+      <mynavheader />
+      <popuplogin />
+      <popupsignup />
   </header>
   <section id='main-content'>
     <img src="../assets/2.jpg" id="image" />
@@ -53,7 +53,7 @@ export default {
   width: 100%;
   height: 580px;
   color: #000000;
-  margin-top: 85px;
+  margin-top: 84px;
   font-family: 'Oleo Script';
   font-weight: 900;
 }
@@ -82,6 +82,8 @@ export default {
   flex-direction: row;
   width: 100%;
   height: 3.5rem;
+  /*position: fixed;
+  top: 665px;*/
   justify-content: center;
   align-items: center;
   align-content: center;

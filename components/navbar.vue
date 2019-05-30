@@ -2,21 +2,21 @@
 		<nav id="navv">
 			<img src="~/assets/foodblog.jpg" alt='oops' id="mylogo" width="70" height='60'/>
 			<ul>
-				<nuxt-link tag="li" to="" >Indian</nuxt-link>
-				<nuxt-link tag="li" to="" >American</nuxt-link>
-				<nuxt-link tag="li" to="" >Italian</nuxt-link>
-				<nuxt-link tag="li" to="" >Chinese</nuxt-link>
+				<nuxt-link tag="li" to="/dishlist" >Indian</nuxt-link>
+				<nuxt-link tag="li" to="/dishlist" >American</nuxt-link>
+				<nuxt-link tag="li" to="/dishlist" >Italian</nuxt-link>
+				<nuxt-link tag="li" to="/dishlist" >Chinese</nuxt-link>
 			</ul>
 			<div class='input-icons'>
 				<button class="btn" @click = "getresults"><i class="fa fa-search icon"></i></button>
 				<input type="text" class="form-control" id="recipesearch" placeholder="Search your favorite recipes" v-model='searchVal' >
 			</div>
-			<span v-if='true'>
+			<span v-if='!$store.state.logInState'>
 			<button @click = "gotoLogin" class="btn btn-outline-success" id="loginbtn">Login</button>
 			<button @click = "gotoSignup" class="btn btn-outline-success" id="signupbtn">Not a user? SignUp</button>
 			</span>
-			<span v-if="false">
-				<h3>Welcome! {{$store.state.authUser.fullName}}</h3> 
+			<span v-if="$store.state.logInState">
+				<label style="margin-right: 5px; color:white; padding-left: 5px; " >Welcome! {{userName}} </label> 
 				<button @click = "gotoLogout" class="btn btn-outline-danger" id="loginbtn">Logout</button>
 			</span>
 			<nuxt-link to="/faq" class="about">FAQ ?</nuxt-link>
@@ -24,15 +24,22 @@
 </template>
 
 <script>
-
+import {eventBus} from '~/plugins/myeventbus.js'
 
 export default {
 	components:{
     
 	},
+	created(){
+
+		eventBus.$on('signedIn',(name)=>{
+			this.userName = name;
+		})
+	},
 	data(){
 		return {
 			searchVal:'',
+			userName: ''
 		}
 	},
 	methods:{
@@ -50,6 +57,10 @@ export default {
 			document.getElementById("main-content").style.filter= 'blur(2px)';
 			document.getElementById("navv").style.filter= 'blur(2px)';
       		document.getElementById("myfooter").style.filter= 'blur(2px)';
+		},
+		async gotoLogout(){
+			await this.$store.dispatch('logout');
+
 		}
 	}
 }

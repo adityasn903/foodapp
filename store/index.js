@@ -3,7 +3,7 @@ import Vue from "vue";
 
 export const state = () => ({
   authUser: null,
-  logInState: true
+  logInState: false
 })
 
 export const mutations = {
@@ -25,15 +25,15 @@ export const getters = {
 export const actions = {
   // nuxtServerInit is called by Nuxt.js before server-rendering every page
   nuxtServerInit({ commit }, { req }) {
-   // if (req.session && req.session.authUser) {
-   //    commit('SET_USER', req.session.authUser);
-   //    }
+    if (req.session && req.session.authUser) {
+       commit('SET_USER', req.session.authUser);
+       }
     },
   async login({ commit }, { username, password }) {
     await axios.post('/login',{username, password})
       .then((response) =>{
         localStorage.setItem('authToken', response.data.userId);
-        this.$router.push('/dishlist');
+        commit('SET_USER',response.data);
     })
       .catch((error)=>{
       if (error.response && error.response.status === 401) {
