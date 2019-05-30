@@ -2,12 +2,20 @@ import axios from 'axios'
 import Vue from "vue";
 
 export const state = () => ({
-  authUser: null
+  authUser: null,
+  logInState: true
 })
 
 export const mutations = {
   SET_USER: function (state, user) {
     state.authUser = user;
+
+    if (state.logInState){
+      state.logInState = false;  
+    }
+    else{
+      state.logInState = true;
+    }
   }
 }
 export const getters = {
@@ -22,7 +30,7 @@ export const actions = {
    //    }
     },
   async login({ commit }, { username, password }) {
-    await axios.post('/api/login',{username, password})
+    await axios.post('/login',{username, password})
       .then((response) =>{
         localStorage.setItem('authToken', response.data.userId);
         this.$router.push('/dishlist');
@@ -35,7 +43,7 @@ export const actions = {
     })
   },
   async signup ({commit}, payload) {
-      await axios.post('/api/signup', payload).then((response)=>{
+      await axios.post('/signup', payload).then((response)=>{
           console.log(response.data);
           localStorage.setItem('authToken', response.data.userId);
           commit('SET_USER',response.data);
@@ -44,7 +52,7 @@ export const actions = {
       })
   },
   async logout({ commit }, payload) {
-    await axios.post('/api/logout', payload).then((res)=>{
+    await axios.post('/logout', payload).then((res)=>{
       localStorage.setItem('authToken', null);
       commit('SET_USER', null);
     })

@@ -67,6 +67,7 @@
             placeholder="Enter Your Phone Number"
           >
           <i class="fa fa-phone fa-lg fa-fw" aria-hidden="true"></i>
+          
           <button
             class="btn btn-green"
             @click="sendOTP"
@@ -76,7 +77,7 @@
         </div>
         <div class="alert alert-danger" v-if="phoneErrorMessage">{{phoneErrorMessage}}</div>
 
-        <div class="input-container" v-if="flag1">
+        <div class="input-container" v-if="true">
           <input
             type="text"
             :class="{ 'form-control':true, 'is-valid':vflag1, 'is-invalid':iflag1 }"
@@ -84,10 +85,16 @@
             placeholder="OTP Here"
           >
           <i class="fa fa-pencil fa-lg fa-fw" aria-hidden="true"></i>
-          <button @click.prevent="verifyOTP" v-if="otp_sub_button" class="btn btn-primary">Submit</button>
+          
+          <button
+          @click.prevent="verifyOTP"
+          v-if="otp_sub_button"
+          class="btn btn-green"
+          style="width:80px;background-color:green;outline: 0;color: white;margin-left:4px;"
+          >Submit</button>
         </div>
         <div class="alert alert-danger" v-if="otpErrorMessage">{{otpErrorMessage}}</div>
-        <div v-if="flag2">
+        <div v-if="true">
           <div class="input-container">
             <input
               class="form-control"
@@ -106,18 +113,18 @@
               name="email"
               v-model="UserData.userEmail"
               placeholder="Enter Your Email" >
-              <i class="fas fa-envelope-square"></i>
+              <i class="fa fa-envelope-square fa-lg fa-fw"></i>
           </div>
 
           <div class="radio-inline">
             <div class="radio-inline">
-              <label for="male" >
+              <label for="male" style='color:white'>
                 <input type="radio" id="male" value="Male" v-model="UserData.gender"> Male
               </label>
             </div>
 
-            <div class="radio-inline" style='color:#20262E;'>
-              <label for="female" >
+            <div class="radio-inline">
+              <label for="female" style='color:white'>
                 <input type="radio" id="female" value="Female" v-model="UserData.gender" > Female
               </label>
             </div>
@@ -221,7 +228,7 @@ export default {
     },
     verifyOTP() {
       axios
-        .post("/api/verifyotp", {
+        .post("/verifyotp", {
           request_id: this.otp_data.request_id,
           code: this.otp
         })

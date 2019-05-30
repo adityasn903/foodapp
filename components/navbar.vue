@@ -11,8 +11,14 @@
 				<button class="btn" @click = "getresults"><i class="fa fa-search icon"></i></button>
 				<input type="text" class="form-control" id="recipesearch" placeholder="Search your favorite recipes" v-model='searchVal' >
 			</div>
+			<span v-if='true'>
 			<button @click = "gotoLogin" class="btn btn-outline-success" id="loginbtn">Login</button>
 			<button @click = "gotoSignup" class="btn btn-outline-success" id="signupbtn">Not a user? SignUp</button>
+			</span>
+			<span v-if="false">
+				<h3>Welcome! {{$store.state.authUser.fullName}}</h3> 
+				<button @click = "gotoLogout" class="btn btn-outline-danger" id="loginbtn">Logout</button>
+			</span>
 			<nuxt-link to="/faq" class="about">FAQ ?</nuxt-link>
 		</nav>
 </template>
