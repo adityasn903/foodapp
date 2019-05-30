@@ -49,6 +49,7 @@ export default{
 		  	document.getElementById("myLoginForm").style.display = "none";
 		    document.getElementById("main-content").style.filter= 'blur(0px)';
 		    document.getElementById("navv").style.filter= 'blur(0px)';
+  			document.getElementById("myfooter").style.filter= 'blur(0px)';
 
 		}	
 	}

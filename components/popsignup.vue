@@ -111,14 +111,14 @@
 
           <div class="radio-inline">
             <div class="radio-inline">
-              <label for="male">
+              <label for="male" >
                 <input type="radio" id="male" value="Male" v-model="UserData.gender"> Male
               </label>
             </div>
 
-            <div class="radio-inline">
-              <label for="female">
-                <input type="radio" id="female" value="Female" v-model="UserData.gender"> Female
+            <div class="radio-inline" style='color:#20262E;'>
+              <label for="female" >
+                <input type="radio" id="female" value="Female" v-model="UserData.gender" > Female
               </label>
             </div>
           </div>
@@ -133,7 +133,7 @@
             class="btn btn-danger"
             @click="closeform"
             style="margin-left:30px;width:120px;margin-bottom: 5px;"
-          >SignUp</button>
+          >Close</button>
         </div>
       </form>
     </div>
@@ -184,6 +184,7 @@ export default {
       document.getElementById("mySignupForm").style.display = "none";
       document.getElementById("main-content").style.filter= 'blur(0px)';
       document.getElementById("navv").style.filter= 'blur(0px)';
+      document.getElementById("myfooter").style.filter= 'blur(0px)';
     },
     sendOTP() {
       axios
@@ -303,7 +304,7 @@ export default {
   justify-items: stretch;
   align-items: center;
   align-content: center;
-  top: 15%;
+  
   left: 35%;
   border-radius: 5px;
   background: #1C2128;

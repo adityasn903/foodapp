@@ -37,11 +37,13 @@ export default {
 			document.getElementById("myLoginForm").style.display = "flex";
 			document.getElementById("main-content").style.filter= 'blur(2px)';
 			document.getElementById("navv").style.filter= 'blur(2px)';
+      		document.getElementById("myfooter").style.filter= 'blur(2px)';
 		},
 		gotoSignup(){
 			document.getElementById("mySignupForm").style.display = "flex";
 			document.getElementById("main-content").style.filter= 'blur(2px)';
 			document.getElementById("navv").style.filter= 'blur(2px)';
+      		document.getElementById("myfooter").style.filter= 'blur(2px)';
 		}
 	}
 }

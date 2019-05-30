@@ -1,4 +1,6 @@
 const pkg = require('./package');
+const bodyParser = require('body-parser')
+const session = require('express-session')
 
 
 module.exports = {
@@ -39,7 +41,17 @@ module.exports = {
   */
   plugins: [
   ],
-
+  serverMiddleware: [
+      // body-parser middleware
+      bodyParser.json(),
+      // session middleware
+      session({
+        secret: 'super-secret-key',
+        resave: false,
+        saveUninitialized: false,
+        cookie: { maxAge: 60000 }
+      }),
+  ],
   /*
   ** Nuxt.js modules
   */

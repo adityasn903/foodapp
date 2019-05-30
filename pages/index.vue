@@ -9,7 +9,7 @@
     <img src="../assets/2.jpg" id="image" />
     <h1>Discover some amazing recipes which makes you hearts filled.<br> Go on! Explore the site...</h1>
   </section>
-  <footer class="myfooter">
+  <footer id="myfooter">
       <span>All trademarks are properties of their respective owners. © 2008-2019 - My food blog. All rights reserved.</span>
       <nuxt-link to=""><i class="fa fa-facebook socialicon" ></i></nuxt-link>
       <nuxt-link to=""><i class="fa fa-instagram socialicon"></i></nuxt-link>
@@ -74,7 +74,7 @@ export default {
   transform: scaleY(1.5);
   padding-bottom: 15rem;
 }
-.myfooter {
+#myfooter {
   color: #28A745;
   background-color: #1C2128;
   display: -ms-flexbox; /* IE10 */
@@ -90,7 +90,7 @@ export default {
   font-size: 1.2rem;
   margin: 0 auto;
 }
-.myfooter span {
+#myfooter span {
   margin-right: 15rem;
   margin-left: 20rem;
 }

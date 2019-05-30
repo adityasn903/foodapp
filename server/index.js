@@ -14,7 +14,23 @@ const expressValidator = require('express-validator');
 const cookieParser = require("cookie-parser");
 
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
+const router = express.Router();
+router.use((req, res, next) => {
+  Object.setPrototypeOf(req, app.request);
+  Object.setPrototypeOf(res, app.response);
+  req.res = res;
+  res.req = req;
+  next();
+});
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
 config.dev = !(process.env.NODE_ENV === 'production')
@@ -115,11 +131,12 @@ app.post("/signup", (req, res) => {
 });
 
 app.post("/sendotp", (req, res) => {
-  console.log('request came!!!!!!!!!!!!!!!');
+  console.log(req.body.phoneNumber);
 
   users.findOne({contact: req.body.phoneNumber}).then((currentUser)=>{
     if(!currentUser){
       var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+      console.log(`token is ${token}`);
       req.session.OTPtoken = token;
       var nexmoSend = {
         api_key: "74ca638f",
