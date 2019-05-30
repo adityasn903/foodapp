@@ -1,9 +1,9 @@
 <template>      
 <div class="maindiv"> 
   <header> 
-      <mynavheader />
-      <popuplogin />
-      <popupsignup />
+    <mynavheader />
+    <popuplogin />
+    <popupsignup />
   </header>
   <section id='main-content'>
     <img src="../assets/2.jpg" id="image" />
@@ -82,8 +82,8 @@ export default {
   flex-direction: row;
   width: 100%;
   height: 3.5rem;
-  /*position: fixed;
-  top: 665px;*/
+  position: fixed;
+  top: 665px;
   justify-content: center;
   align-items: center;
   align-content: center;

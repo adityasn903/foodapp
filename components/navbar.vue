@@ -31,10 +31,15 @@ export default {
     
 	},
 	created(){
-
 		eventBus.$on('signedIn',(name)=>{
-			this.userName = name;
+		this.userName = name;
 		})
+	},
+	mounted() {
+		let name = localStorage.getItem('userName');
+		if(name){
+			this.userName = name;
+		}
 	},
 	data(){
 		return {

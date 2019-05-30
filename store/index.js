@@ -33,7 +33,9 @@ export const actions = {
     await axios.post('/login',{username, password})
       .then((response) =>{
         localStorage.setItem('authToken', response.data.userId);
+        localStorage.setItem('userName', response.data.fullName);
         commit('SET_USER',response.data);
+        this.$router.push('/dishlist');
     })
       .catch((error)=>{
       if (error.response && error.response.status === 401) {
@@ -44,8 +46,8 @@ export const actions = {
   },
   async signup ({commit}, payload) {
       await axios.post('/signup', payload).then((response)=>{
-          console.log(response.data);
           localStorage.setItem('authToken', response.data.userId);
+          localStorage.setItem('userName', response.data.fullName);
           commit('SET_USER',response.data);
       }).catch((error)=>{
           console.log(error);
@@ -53,7 +55,8 @@ export const actions = {
   },
   async logout({ commit }, payload) {
     await axios.post('/logout', payload).then((res)=>{
-      localStorage.setItem('authToken', null);
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('userName');
       commit('SET_USER', null);
     })
     .catch((err)=>{
