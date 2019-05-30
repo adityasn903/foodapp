@@ -16,8 +16,8 @@
 			<button @click = "gotoSignup" class="btn btn-outline-success" id="signupbtn">Not a user? SignUp</button>
 			</span>
 			<span v-if="$store.state.logInState">
-				<label style="margin-right: 5px; color:white; padding-left: 5px; " >Welcome! {{userName}} </label> 
-				<button @click = "gotoLogout" class="btn btn-outline-danger" id="loginbtn">Logout</button>
+				<label style="margin-right: 3px; color:white;" >Welcome! {{userName}} </label> 
+				<button @click = "gotoLogout" class="btn btn-outline-danger" style="margin-left: 5px;" id="loginbtn">Logout</button>
 			</span>
 			<nuxt-link to="/faq" class="about">FAQ ?</nuxt-link>
 		</nav>
@@ -109,7 +109,8 @@ export default {
 }
 .input-icons{
 	width: 25%;
-	margin-left: 100px;
+	margin-left: 90px;
+	margin-right: 30px;
 }
 .input-icons .btn { 
     position: absolute; 
@@ -127,7 +128,7 @@ export default {
 	margin-right: 20px;
 }
 .about{
-	margin-left: 40px;
+	margin-left: 30px;
 	color: #28A745;
 	font-weight: 550;
 }

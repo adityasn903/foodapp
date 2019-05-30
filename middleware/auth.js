@@ -1,6 +1,6 @@
 export default function ({ store, error }) {
 
-    if (!store.state.authUser) {
+    if (!store.state.logInState) {
       error({
         message: 'You are not signed in ',
         statusCode: 403
