@@ -194,7 +194,6 @@ app.get('/getimage/:itsname', (req, res, next)=>{
       'x-sent': true
     }
   }
-
   var fileName = req.params.itsname;
   res.sendFile(fileName, options, function (err) {
     if (err) {
@@ -204,9 +203,11 @@ app.get('/getimage/:itsname', (req, res, next)=>{
     }
   })
 });
+
 app.get('/getdish/:dish', (req, res)=>{
   var particularDish = req.params.dish;
   dishes.find({name: particularDish}).then((dishresult)=>{
+    console.log(dishresult);
     return res.json(dishresult);
   })
   .catch((err)=>{

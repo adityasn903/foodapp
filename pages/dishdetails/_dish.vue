@@ -10,26 +10,34 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default{
   
   data(){
     return {
-      particularDish:[]
+      particularDish:''
     }
   },
   created() {
-    this.particularDish = this.$store.state.listOfDishes.filter((selectedDish)=>{
-      return selectedDish.name === this.$route.params.dish;
-    })[0];
+    if(this.$store.state.listOfDishes){
+      console.log("inside if");
+      this.particularDish = this.$store.state.listOfDishes.filter((selectedDish)=>{
+        return selectedDish.name === this.$route.params.dish;
+      })[0];
+    }
     if(this.particularDish){
+      console.log("inside second if");
       this.$store.dispatch('storeDishDetail', this.particularDish);
       this.particularDish = this.$store.state.dishDetail;
-    }else{
+    }
+    else{
       var myUrl = '/getdish/'+ this.$route.params.dish;
-      axios.get(myurl)
+      axios.get(myUrl)
       .then((res)=>{
+        console.log("inside else");
+        console.log(this.$store.state.dishDetail);
         this.$store.dispatch('storeDishDetail', res.data);
-        this.particularDish = this.$store.state.dishDetail;
+        this.particularDish = this.$store.state.dishDetail[0];
       })
       .catch((err)=>{
         console.log("Dish not found!!!");
@@ -76,6 +84,7 @@ export default{
   list-style: none;
   color: #006E6D;
   z-index:11;
+  font-size: 18px;
 }
 
 

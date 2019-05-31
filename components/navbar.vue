@@ -24,11 +24,9 @@
 
 <script>
 import {eventBus} from '~/plugins/myeventbus.js'
+import axios from 'axios';
 
 export default {
-	components:{
-    
-	},
 	created(){
 		eventBus.$on('signedIn',(name)=>{
 		this.userName = name;
@@ -48,7 +46,7 @@ export default {
 	},
 	methods:{
 		getresults(){
-
+			this.$router.push("/dishdetails/"+this.searchVal);
 		},
 		gotoLogin(){
 			document.getElementById("myLoginForm").style.display = "flex";

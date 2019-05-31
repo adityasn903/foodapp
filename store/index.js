@@ -4,8 +4,8 @@ import Vue from "vue";
 export const state = () => ({
   authUser: null,
   logInState: false,
-  listOfDishes:[],
-  dishDetail: []
+  listOfDishes:null,
+  dishDetail: null
 })
 
 export const mutations = {
