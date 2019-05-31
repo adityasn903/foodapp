@@ -204,6 +204,15 @@ app.get('/getimage/:itsname', (req, res, next)=>{
     }
   })
 });
+app.get('/getdish/:dish', (req, res)=>{
+  var particularDish = req.params.dish;
+  dishes.find({name: particularDish}).then((dishresult)=>{
+    return res.json(dishresult);
+  })
+  .catch((err)=>{
+    res.sendStatus(404);
+  })
+});
 
 
 

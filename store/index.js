@@ -21,6 +21,9 @@ export const mutations = {
   },
   SET_DISHESLIST: function(state, theDishes){
     state.listOfDishes = theDishes;
+  },
+  SET_DISHDETAIL: function(state, theDish){
+    state.dishDetail = theDish;
   }
 
 }
@@ -71,5 +74,8 @@ export const actions = {
   },
   storeDishes({commit}, payload) {
     commit('SET_DISHESLIST', payload);
+  },
+  storeDishDetail({commit}, payload) {
+    commit('SET_DISHDETAIL', payload);
   }
 }

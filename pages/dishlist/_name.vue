@@ -39,8 +39,6 @@ export default {
       .then((res)=>{
         this.$store.dispatch('storeDishes', res.data);
         this.loadedDishes = this.$store.state.listOfDishes;
-        console.log(this.loadedDishes);
-
       })
       .catch((err)=>{
         console.log('sorry about the dishes!!!');
