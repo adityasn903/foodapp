@@ -1,6 +1,6 @@
 <template>
 
-  <section id='main-content'>
+  <section id='main-contentindex'>
     <img src="../assets/2.jpg" id="image" />
     <h1>Discover some amazing recipes which makes you hearts filled.<br> Go on! Explore the site...</h1>
   </section>
@@ -27,7 +27,7 @@ export default {
 
 <style>
 
-#main-content {
+#main-contentindex {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,7 +48,7 @@ export default {
   -webkit-filter: blur(1.5px);
   position: absolute;
 }
-#main-content h1{
+#main-contentindex h1{
   z-index: 2;
   font-weight: 800;
   align-self: center;

@@ -1,6 +1,6 @@
 <template>
 		<nav id="navv">
-			<img src="~/assets/foodblog.jpg" alt='oops' id="mylogo" width="70" height='60'/>
+			<nuxt-link to="/"><img src="~/assets/foodblog.jpg" alt='oops' id="mylogo" width="70" height='60'/></nuxt-link>
 			<ul>
 				<nuxt-link tag="li" to="/dishlist/indian" >Indian</nuxt-link>
 				<nuxt-link tag="li" to="/dishlist/italian" >Italian</nuxt-link>
@@ -72,6 +72,7 @@ export default {
 </script>
 
 <style>
+
 #navv {
 	display: -ms-flexbox; /* IE10 */
 	display: flex;
@@ -87,6 +88,7 @@ export default {
   	position: fixed;
   	font-size: 2rem;
 }
+
 #mylogo{
 	padding-left: 5px;
 }

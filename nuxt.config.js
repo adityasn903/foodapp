@@ -21,7 +21,8 @@ module.exports = {
       {href:'http://fonts.googleapis.com/css?family=Droid+Serif', rel:'stylesheet', type:'text/css'},
       {href:'https://fonts.googleapis.com/css?family=Roboto&display=swap', rel:'stylesheet', type:'text/css'},
       {href:'http://fonts.googleapis.com/css?family=Lobster+Two', rel:'stylesheet', type:'text/css'},
-      {href:'http://fonts.googleapis.com/css?family=Oleo+Script', rel:'stylesheet', type:'text/css'}
+      {href:'http://fonts.googleapis.com/css?family=Oleo+Script', rel:'stylesheet', type:'text/css'},
+      {href:"https://fonts.googleapis.com/css?family=Poppins:400,600", rel:"stylesheet", type:'text/css'}
     ]
   },
 

@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 var session = require('express-session');
 const _ = require("lodash");
 const { users } = require("./models/users");
-// const { dishes } = require("./models/dishes");
+const { dishes } = require("./models/dishes");
 const { mongoose } = require("./db/mongoose");
 const expressValidator = require('express-validator');
 const cookieParser = require("cookie-parser");
@@ -175,7 +175,35 @@ app.post("/verifyotp", (req, res) => {
 });
 // req-res to get the dish list and dish details
 
-app.get('/')
+app.get('/dishlist/:name', (req, res)=>{
+  var dishCategory = req.params.name;
+  dishes.find({category: dishCategory}).then((dishesList)=>{
+    return res.json(dishesList);
+  })
+  .catch((err)=>{
+    res.sendStatus(404);
+  })
+});
+
+app.get('/getimage/:itsname', (req, res, next)=>{
+  var options = {
+    root: __dirname + '/public/',
+    dotfiles: 'deny',
+    headers: {
+      'x-timestamp': Date.now(),
+      'x-sent': true
+    }
+  }
+
+  var fileName = req.params.itsname;
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      next(err)
+    } else {
+      console.log('Sent:', fileName)
+    }
+  })
+});
 
 
 

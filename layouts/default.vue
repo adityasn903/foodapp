@@ -31,22 +31,38 @@ export default {
     return {
 
     }
-  },
-  created(){
-
   }
 }
 </script>
 
 <style>
-.maindiv {
-  display: flex;
-  flex-direction: column;
-  justify-content:flex-start;
-  align-items: flex-start;
-  align-content: flex-start;
-}
-#main-content {
+  .maindiv {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  #myfooter {
+    color: #28A745;
+    background-color: #1C2128;
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 56px;
+    position: fixed;
+    top: 665px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: 'Lobster Two';
+    z-index: 3;
+    font-size: 19px;
+    margin: 0 auto;
+  }
+/*#main-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,29 +73,11 @@ export default {
   margin-top: 84px;
   font-family: 'Oleo Script';
   font-weight: 900;
-}
+}*/
 
-#myfooter {
-  color: #28A745;
-  background-color: #1C2128;
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 3.5rem;
-  position: fixed;
-  top: 665px;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  font-family: 'Lobster Two';
-  z-index: 3;
-  font-size: 1.2rem;
-  margin: 0 auto;
-}
 #myfooter span {
-  margin-right: 15rem;
-  margin-left: 20rem;
+  margin-right: 240px;
+  margin-left: 320px;
 }
 .socialicon {
   color: #28A745;

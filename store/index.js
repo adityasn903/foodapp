@@ -18,6 +18,9 @@ export const mutations = {
     else{
       state.logInState = true;
     }
+  },
+  SET_DISHESLIST: function(state, theDishes){
+    state.listOfDishes = theDishes;
   }
 
 }
@@ -39,7 +42,6 @@ export const actions = {
         localStorage.setItem('authToken', response.data.userId);
         localStorage.setItem('userName', response.data.fullName);
         commit('SET_USER',response.data);
-        this.$router.push('/dishlist');
     })
       .catch((error)=>{
       if (error.response && error.response.status === 401) {
@@ -66,33 +68,8 @@ export const actions = {
     .catch((err)=>{
       console.log('logout failed');
     })
-  }     
-
+  },
+  storeDishes({commit}, payload) {
+    commit('SET_DISHESLIST', payload);
+  }
 }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
