@@ -17,17 +17,9 @@
 </template>
 
 <script>
-import mynavbar from '~/components/navbar';
-import popuplogin from '~/components/poplogin';
-import popupsignup from '~/components/popsignup';
 import axios from "axios";
 
 export default {
-  components: {
-    'mynavheader': mynavbar,
-    'popuplogin':popuplogin,
-    'popupsignup':popupsignup
-  },
   data(){
     return {
       loadedDishes:[]

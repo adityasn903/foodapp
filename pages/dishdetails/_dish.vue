@@ -1,7 +1,7 @@
 <template>
 	<section id="main-dishdetail">
 		  <img src="http://clipart-library.com/img/1639808.jpg" class="imgg" />
-      <h2>{{particularDish.name.toUpperCase()}}</h2>
+      <h2>{{ particularDish.name.toUpperCase() }}</h2>
       <ul >
         <li v-for="dishingredient in particularDish.ingredients">{{dishingredient}}</li>
       </ul>
@@ -22,7 +22,7 @@ export default{
     if(this.$store.state.listOfDishes){
       console.log("inside if");
       this.particularDish = this.$store.state.listOfDishes.filter((selectedDish)=>{
-        return selectedDish.name === this.$route.params.dish;
+        return selectedDish.name == this.$route.params.dish;
       })[0];
     }
     if(this.particularDish){
@@ -34,9 +34,9 @@ export default{
       var myUrl = '/getdish/'+ this.$route.params.dish;
       axios.get(myUrl)
       .then((res)=>{
-        console.log("inside else");
-        console.log(this.$store.state.dishDetail);
+        console.log("inside else");        
         this.$store.dispatch('storeDishDetail', res.data);
+        console.log(this.$store.state.dishDetail[0]);
         this.particularDish = this.$store.state.dishDetail[0];
       })
       .catch((err)=>{
