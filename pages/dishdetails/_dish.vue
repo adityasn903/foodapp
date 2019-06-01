@@ -1,7 +1,7 @@
 <template>
 	<section id="main-dishdetail">
 		  <img src="http://clipart-library.com/img/1639808.jpg" class="imgg" />
-      <h2>{{ particularDish.name.toUpperCase() }}</h2>
+      <h2>{{ particularDish.name }}</h2>
       <ul >
         <li v-for="dishingredient in particularDish.ingredients">{{dishingredient}}</li>
       </ul>
@@ -15,34 +15,29 @@ export default{
   
   data(){
     return {
-      particularDish:''
+      particularDish: null
     }
   },
   created() {
     if(this.$store.state.listOfDishes){
-      console.log("inside if");
+      
       this.particularDish = this.$store.state.listOfDishes.filter((selectedDish)=>{
         return selectedDish.name == this.$route.params.dish;
       })[0];
-    }
-    if(this.particularDish){
-      console.log("inside second if");
-      this.$store.dispatch('storeDishDetail', this.particularDish);
-      this.particularDish = this.$store.state.dishDetail;
-    }
-    else{
-      var myUrl = '/getdish/'+ this.$route.params.dish;
-      axios.get(myUrl)
-      .then((res)=>{
-        console.log("inside else");        
-        this.$store.dispatch('storeDishDetail', res.data);
-        console.log(this.$store.state.dishDetail[0]);
+      if(this.particularDish){
+        console.log("inside second if");
+        this.$store.dispatch('storeDishDetail', this.particularDish);
+        this.particularDish = this.$store.state.dishDetail;
+      
+      } else {
+          console.log("inside inner else")
+          var myUrl = '/getdish/' + this.$route.params.dish;
+          this.$store.dispatch('getMyDish', myUrl);
+          this.particularDish = this.$store.state.dishDetail;    
+      }
+    } else if (this.$store.state.dishDetail) {
         this.particularDish = this.$store.state.dishDetail[0];
-      })
-      .catch((err)=>{
-        console.log("Dish not found!!!");
-      })  
-    }
+        }
   }
 }
 </script>

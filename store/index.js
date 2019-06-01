@@ -29,6 +29,9 @@ export const mutations = {
 }
 
 export const getters = {
+  GET_DISHDETAIL: function(state){
+    return state.dishDetail;
+  }
   
 }
 
@@ -72,10 +75,22 @@ export const actions = {
       console.log('logout failed');
     })
   },
+
+  async getMyDish({ commit }, payload){
+    await commit('SET_DISHDETAIL', null);
+    await axios.get(payload)
+            .then((res)=>{    
+              commit('SET_DISHDETAIL', res.data);
+              console.log();
+            })
+            .catch((err)=>{
+              console.log("Dish not found!!!");
+            })
+  },
   storeDishes({commit}, payload) {
     commit('SET_DISHESLIST', payload);
   },
-  storeDishDetail({commit}, payload) {
+  storeDishDetail({commit}, payload){
     commit('SET_DISHDETAIL', payload);
   }
 }

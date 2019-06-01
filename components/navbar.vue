@@ -46,6 +46,9 @@ export default {
 	},
 	methods:{
 		getresults(){
+			var myUrl = '/getdish/'+ this.searchVal;
+			console.log(this.searchVal);
+			this.$store.dispatch('getMyDish', myUrl);
 			this.$router.push("/dishdetails/"+this.searchVal);
 		},
 		gotoLogin(){
