@@ -137,8 +137,8 @@ app.post("/sendotp", (req, res) => {
       var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
       req.session.OTPtoken = token;
       var nexmoSend = {
-        api_key: "12a22759",
-        api_secret: "OpPYZQiQGt9j1G8Y",
+        api_key: "API_KEY",
+        api_secret: "API_SECRET",
         number: req.body.phoneNumber,
         brand: "NexmoVerifyTest"
       };
@@ -148,6 +148,7 @@ app.post("/sendotp", (req, res) => {
             res.send(response.data);
           })
           .catch(err => {
+            console.log(err);
             res.status(401).send("Error sending OTP");
           });
     } else {
@@ -159,8 +160,8 @@ app.post("/sendotp", (req, res) => {
 app.post("/verifyotp", (req, res) => {
 
   var nexmoSend = {
-    api_key: "12a22759",
-    api_secret: "OpPYZQiQGt9j1G8Y",
+    api_key: "API_KEY",
+    api_secret: "API_SECRET",
     request_id: req.body.request_id,
     code: req.body.code
   };
